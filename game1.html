@@ -32,7 +32,47 @@
 						<div class="inner">
 							<h1 class="major">Mouse Game</h1>
 							<span class="image fit">
-								<canvas id="game1"  width="150" height="150"></canvas>
+								<div class="row">
+									<div class="column">
+									  <img id="cookie" src="images/cookiePic.jpg" width="`300" height="300" />
+									</div>
+									<div class="column">
+									  <button type="button" onclick="WorkerTabSelect()">Workers</button>
+									  <button type="button" onclick="ResearchTabSelect()">Research</button>
+									  <br>
+									  <div id="tab1" style="display: none;">
+										<br>
+										<br>
+										<button type="button" id="w1">Scavenger</button>
+										<br>
+										<button type="button" id="w2">Junior Scavenger</button>
+										<br>
+										<button type="button" id="w3">Intermediate Scavenger</button>
+										<br>
+										<button type="button" id="w4">Journeyman Scavenger</button>
+										<br>
+										<button type="button" id="w5">Veteran Scavenger</button>
+										<br>
+									  </div>
+									  <div id="tab2" style="display: none;">
+										<br>
+										<br>
+										<button type="u1" id="u1">Second Hand Tools</button>
+										<br>
+										<button type="button" id="u2">Apprenticeship</button>
+										<br>
+										<button type="button" id="u3">Custom Tooling</button>
+										<br>
+										<button type="button" id="u4">Internship</button>
+										<br>
+										<button type="button" id="u5">6th Sense Training</button>
+										<br>
+										<button type="button" id="u6">Breaking Your Shackles</button>
+										<br>
+									  </div>
+									</div>
+								  </div>
+								  
 							</span>
 							<p>This is a very basic clicker game with a twist. The idea is that you can click the cookie in the middle to nibble. When you have enough food stored away you can pay for some research or hire some friends to help. The twist is that every once and a while the boss rat will come and take a payment. The rat king keeps demanding more and more food until you fail or you manage buy out the research needed to defeat him.</p>
 							<p>the game is again very basic but I think it helped me to use my basic understanding of html and js to use some library is that I was not taught about. I decided to start with a basic idea and slowly expand polishing the features as I got more and more done.</p>

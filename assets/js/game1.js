@@ -1,5 +1,12 @@
-var c = document.getElementById("game1");
-var ctx = c.getContext("2d");
-var img1 = document.createElement("cookie");
-img1.src = "images/cookiePic.jpg";
-ctx.drawImage(img, 10, 10);
+const workerTab = document.getElementById("tab1");
+const researchTab = document.getElementById("tab2");
+
+function WorkerTabSelect() {
+workerTab.style.display = "inline-block"
+researchTab.style.display = "none"
+}
+
+function ResearchTabSelect() {
+workerTab.style.display = "none"
+researchTab.style.display = "inline-block"
+}
