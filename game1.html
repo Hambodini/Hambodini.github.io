@@ -5,96 +5,112 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Mouse Game</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
 
-		<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="title">Home</a>
-				<nav>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-					</ul>
-				</nav>
-			</header>
+<head>
+	<title>Mouse Game</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/game1.css" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<body class="is-preload">
 
-				<!-- Main -->
-					<section id="main" class="wrapper">
-						<div class="inner">
-							<h1 class="major">Mouse Game</h1>
-							<span class="image fit">
-								<div class="row">
-									<div class="column">
-									  <img id="cookie" src="images/cookiePic.jpg" width="`300" height="300" />
-									</div>
-									<div class="column">
-									  <button onclick="WorkerTabSelect()">Workers</button>
-									  <button onclick="ResearchTabSelect()">Research</button>
-									  <br>
-									  <div id="tab1" style="display: none;">
-										<button id="w1">Scavenger</button>
-										<br>
-										<button id="w2">Junior Scavenger</button>
-										<br>
-										<button id="w3">Intermediate Scavenger</button>
-										<br>
-										<button id="w4">Journeyman Scavenger</button>
-										<br>
-										<button id="w5">Veteran Scavenger</button>
-										<br>
-									  </div>
-									  <div id="tab2" style="display: none;">
-										<button id="u1">Second Hand Tools</button>
-										<br>
-										<button id="u2">Apprenticeship</button>
-										<br>
-										<button id="u3">Custom Tooling</button>
-										<br>
-										<button id="u4">Internship</button>
-										<br>
-										<button id="u5">6th Sense Training</button>
-										<br>
-										<button id="u6">Breaking Your Shackles</button>
-										<br>
-									  </div>
-									</div>
-								  </div>
-								  
-							</span>
-							<p>This is a very basic clicker game with a twist. The idea is that you can click the cookie in the middle to nibble. When you have enough food stored away you can pay for some research or hire some friends to help. The twist is that every once and a while the boss rat will come and take a payment. The rat king keeps demanding more and more food until you fail or you manage buy out the research needed to defeat him.</p>
-							<p>the game is again very basic but I think it helped me to use my basic understanding of html and js to use some library is that I was not taught about. I decided to start with a basic idea and slowly expand polishing the features as I got more and more done.</p>
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Home</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+				<h1 class="major">Mouse Game</h1>
+					<div class="box">
+						<div>
+							<span id="crumbCount"></span>
+							<br>
+							<span id="crumbCountPS">Crumbs Per Second: 0</span>
+							<br>
+							<img onclick="cookieClick()" id="cookie" src="images/cookiePic.jpg" width="`300" height="300" />
+							<br>
+							<p id="error"></p>
 						</div>
-					</section>
-
+						<div>
+							<button onclick="WorkerTabSelect()">Workers</button>
+							<button onclick="ResearchTabSelect()">Research</button>
+							<br>
+							<div id="tab1">
+								<button onclick='buy("w1")' id="w1">Scavenger</button>
+								<br>
+								<button onclick='buy("w2")' id="w2">Junior Scavenger</button>
+								<br>
+								<button onclick='buy("w3")' id="w3">Intermediate Scavenger</button>
+								<br>
+								<button onclick='buy("w4")' id="w4">Journeyman Scavenger</button>
+								<br>
+								<button onclick='buy("w5")' id="w5">Veteran Scavenger</button>
+								<br>
+							</div>
+							<div id="tab2" style="display: none;">
+								<button id="u1">Second Hand Tools</button>
+								<br>
+								<button id="u2">Apprenticeship</button>
+								<br>
+								<button id="u3">Custom Tooling</button>
+								<br>
+								<button id="u4">Internship</button>
+								<br>
+								<button id="u5">6th Sense Training</button>
+								<br>
+								<button id="u6">Breaking Your Shackles</button>
+								<br>
+							</div>
+						</div>
+					</div>
+				<p>This is a very basic clicker game with a twist. The idea is that you can click the cookie in the
+					middle to nibble. When you have enough food stored away you can pay for some research or hire some
+					friends to help. The twist is that every once and a while the boss rat will come and take a payment.
+					The rat king keeps demanding more and more food until you fail or you manage buy out the research
+					needed to defeat him.</p>
+				<p>the game is again very basic but I think it helped me to use my basic understanding of html and js to
+					use some library is that I was not taught about. I decided to start with a basic idea and slowly
+					expand polishing the features as I got more and more done.</p>
 			</div>
+		</section>
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+	</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/game1.js"></script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
 
-	</body>
+	<!-- Scripts -->
+	<script src="assets/js/game1.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
 </html>

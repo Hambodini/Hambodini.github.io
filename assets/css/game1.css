@@ -1,24 +1,17 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  /* Create two equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+.box {
+  display: flex;
+}
+.box div {
+  width: 50%;
+  flex-direction: column;
+}
+/* cookie selector and animation 1 */
+#cookie {
+  animation: idle 5s infinite;
+  transform-origin: 50% 100% 0;
+}
 
-  button {
-    height: 10px;
-    width: 10px;
-  }
-  
+@keyframes idle {
+  0%, 100%{ transform: rotate(-4deg);}
+  50%{ transform: rotate(4deg); }
+}
