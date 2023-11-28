@@ -279,7 +279,7 @@ function scoreLoop() {
     }
     //calc amount due
     //ui updates
-    crumbCountEl.innerHTML = "Crumbs: " + crumbCount
+    crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " / " + debt.amountDue
     crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks
     //reset clicks
     clicks = 0
