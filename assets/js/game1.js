@@ -279,13 +279,13 @@ function scoreLoop() {
     }
     //calc amount due
     //ui updates
-    crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " / " + debt.amountDue
+    crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " &#92; " + debt.amountDue
     crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks
     //reset clicks
     clicks = 0
 }
 //filling html in
-crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " / " + debt.amountDue
+crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " &#92; " + debt.amountDue
 crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks
 //start of loop to update game
 var scoreLoop = setInterval(scoreLoop, 1000);
