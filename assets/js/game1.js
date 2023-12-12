@@ -334,8 +334,8 @@ function scoreLoop() {
 }
 
 //filling html in first time before loop
-crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " &#92; " + debt.amountDue
-crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks
+crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
+crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
 display.innerHTML = "Debt Timer: 00:00"
 
 //start of loop to update game
