@@ -270,8 +270,6 @@ function cookieClick() {
     }
     crumbCount += 1
     clicks += 1
-    crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
-    crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
 }
 
 //timer function from link below
@@ -326,6 +324,9 @@ function scoreLoop() {
         clicks += worker5.cps * worker5.number
         crumbCount += worker5.cps * worker5.number
     }
+}
+
+function uiLoop() {
     //ui updates
     crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
     crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
@@ -340,3 +341,4 @@ display.innerHTML = "Debt Timer: 00:00"
 
 //start of loop to update game
 var scoreLoop = setInterval(scoreLoop, 1000);
+var scoreLoop = setInterval(uiLoop, 1);
