@@ -324,14 +324,14 @@ function scoreLoop() {
         clicks += worker5.cps * worker5.number
         crumbCount += worker5.cps * worker5.number
     }
+    //reset clicks
+    clicks = 0
 }
 
 function uiLoop() {
     //ui updates
     crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
     crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
-    //reset clicks
-    clicks = 0
 }
 
 //filling html in first time before loop
