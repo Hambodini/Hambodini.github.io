@@ -27,7 +27,7 @@ const debt = {
     timesPaid: 0,
     amountDue: 100,
     expRate: .5,
-    timerAmount: 60 * 2
+    timerAmount: 60
 }
 
 const worker1 = {
