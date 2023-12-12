@@ -18,87 +18,94 @@ const errorEl = document.getElementById("error")
 //in-game tracking variables
 var crumbCount = 0
 var clicks = 0
+var firstTimeClicked = true;
 var clicksPerSecond = 0
+//debt timer
+display = document.querySelector('#time')
 const debt = {
+    gameOver: false,
     timesPaid: 0,
-    amountDue: 100
+    amountDue: 100,
+    expRate: .5,
+    timerAmount: 60 * 2
 }
 
 const worker1 = {
     name: "Scavenger",
     number: 0,
-    price: 0,
-    cps: 2
+    price: 10,
+    cps: 1
 }
 
 const worker2 = {
     name: "Junior Scavenger",
     number: 0,
-    price: 0,
+    price: 20,
     cps: 2
 }
 
 const worker3 = {
     name: "Intermediate Scavenger",
     number: 0,
-    price: 0,
-    cps: 2
+    price: 30,
+    cps: 3
 }
 
 const worker4 = {
     name: "Journeyman Scavenger",
     number: 0,
-    price: 0,
-    cps: 2
+    price: 40,
+    cps: 4
 }
 
 const worker5 = {
     name: "Veteran Scavenger",
     number: 0,
-    price: 0,
-    cps: 2
+    price: 50,
+    cps: 5
 }
-
+//research objects
+//upgrade percent is .1 = +10% of worker tier cps
 const research1 = {
     name: "Second Hand Tools",
-    upgradeAmount: 1,
+    upgradePercent: .1,
     number: 0,
-    price: 0
+    price: 20
 }
 const research2 = {
     name: "Apprenticeship",
-    upgradeAmount: 1,
+    upgradePercent: .2,
     number: 0,
-    price: 0
+    price: 30
 }
 const research3 = {
     name: "Custom Tooling",
-    upgradeAmount: 1,
+    upgradePercent: .3,
     number: 0,
-    price: 0
+    price: 40
 }
 const research4 = {
     name: "Internship",
-    upgradeAmount: 1,
+    upgradePercent: .4,
     number: 0,
-    price: 0
+    price: 50
 }
 const research5 = {
     name: "6th Sense Training",
-    upgradeAmount: 1,
+    upgradePercent: .5,
     number: 0,
-    price: 0
+    price: 60
 }
 const research6 = {
     name: "Breaking Your Shackles",
-    upgradeAmount: 1,
     number: 0,
-    price: 0
+    price: 10000
 }
 
 //game functions
 function buy(buttonID) {
     switch (buttonID) {
+        //worker buttons
         case "w1":
             if (crumbCount >= worker1.price) {
                 worker1.number += 1
@@ -154,11 +161,13 @@ function buy(buttonID) {
 
             break;
 
+        //upgrade buttons
         case "u1":
             if (crumbCount >= research1.price) {
                 research1.number += 1
                 research1El.innerHTML = research1.name + " " + research1.number
                 crumbCount -= research1.price
+                worker1.cps = worker1.cps * (1 + research1.upgradePercent)
             } else {
                 errorMsg("you cant afford that!")
             }
@@ -170,6 +179,7 @@ function buy(buttonID) {
                 research2.number += 1
                 research2El.innerHTML = research2.name + " " + research2.number
                 crumbCount -= research2.price
+                worker2.cps = worker2.cps * (1 + research2.upgradePercent)
             } else {
                 errorMsg("you cant afford that!")
             }
@@ -181,6 +191,7 @@ function buy(buttonID) {
                 research3.number += 1
                 research3El.innerHTML = research3.name + " " + research3.number
                 crumbCount -= research3.price
+                worker3.cps = worker3.cps * (1 + research3.upgradePercent)
             } else {
                 errorMsg("you cant afford that!")
             }
@@ -192,6 +203,7 @@ function buy(buttonID) {
                 research4.number += 1
                 research4El.innerHTML = research4.name + " " + research4.number
                 crumbCount -= research4.price
+                worker4.cps = worker4.cps * (1 + research4.upgradePercent)
             } else {
                 errorMsg("you cant afford that!")
             }
@@ -203,6 +215,7 @@ function buy(buttonID) {
                 research5.number += 1
                 research5El.innerHTML = research5.name + " " + research5.number
                 crumbCount -= research5.price
+                worker5.cps = worker5.cps * (1 + research5.upgradePercent)
             } else {
                 errorMsg("you cant afford that!")
             }
@@ -214,6 +227,8 @@ function buy(buttonID) {
                 research6.number += 1
                 research6El.innerHTML = research6.name + " " + research6.number
                 crumbCount -= research6.price
+                //all workers go nuts since you win
+                worker1.cps, worker2.cps, worker3.cps, worker4.cps, worker5.cps = 999
             } else {
                 errorMsg("you cant afford that!")
             }
@@ -249,10 +264,44 @@ function ResearchTabSelect() {
 }
 
 function cookieClick() {
+    if (firstTimeClicked == true) {
+        startTimer(debt.timerAmount, display);
+        firstTimeClicked = false;
+    }
     crumbCount += 1
     clicks += 1
-    //want to show player added clicks as soon as done
-    crumbCountEl.innerHTML = "Crumbs: " + crumbCount
+    crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
+    crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
+}
+
+//timer function from link below
+//https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    debtTimer = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = "Debt Timer: " + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            //what happens when debt timer is up
+            crumbCount -= debt.amountDue
+            if (crumbCount <= 0 && debt.gameOver == false) {
+                window.alert("Your failed to pay the Baron on time.");
+                location.reload()
+            } if (research6.number >= 1) {
+                window.alert("Your managed to pay the Baron completely off. welcome to endless mode until you refresh the page.");
+                clearInterval(debtTimer)
+            }
+            debt.timesPaid += 1
+            debt.amountDue = debt.amountDue * (debt.timesPaid + debt.expRate)
+            timer = duration;
+        }
+    }, 1000);
 }
 
 function scoreLoop() {
@@ -277,16 +326,19 @@ function scoreLoop() {
         clicks += worker5.cps * worker5.number
         crumbCount += worker5.cps * worker5.number
     }
-    //calc amount due
     //ui updates
-    crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " &#92; " + debt.amountDue
-    crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks
+    crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
+    crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
+    //check if you failed
+
     //reset clicks
     clicks = 0
 }
-//filling html in
+
+//filling html in first time before loop
 crumbCountEl.innerHTML = "Crumbs: " + crumbCount + " &#92; " + debt.amountDue
 crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks
+display.innerHTML = "Debt Timer: 00:00"
+
 //start of loop to update game
 var scoreLoop = setInterval(scoreLoop, 1000);
-
