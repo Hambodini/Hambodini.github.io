@@ -302,7 +302,7 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-function scoreLoop() {
+function gameLoop() {
     //calc autoclicks
     if (worker1.number > 0) {
         clicks += worker1.cps * worker1.number
@@ -340,5 +340,6 @@ crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
 display.innerHTML = "Debt Timer: 00:00"
 
 //start of loop to update game
-var scoreLoop = setInterval(scoreLoop, 1000);
-var scoreLoop = setInterval(uiLoop, 1);
+var gameLoop = setInterval(gameLoop, 1000);
+//loop to update display
+var uiLoop = setInterval(uiLoop, 100);
