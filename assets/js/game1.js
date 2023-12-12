@@ -329,8 +329,6 @@ function scoreLoop() {
     //ui updates
     crumbCountEl.innerHTML = "Crumbs: " + crumbCount.toFixed(2) + " &#92; " + debt.amountDue.toFixed(2)
     crumbCountPS.innerHTML = "Crumbs Per Second: " + clicks.toFixed(2)
-    //check if you failed
-
     //reset clicks
     clicks = 0
 }
