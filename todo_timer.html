@@ -55,7 +55,17 @@
             <div class="inner">
                 <h1 class="major">Todo list and Timer</h1>
                 <div class="box">
-                    
+                    <form>
+                        <label for="startdate">Start Date:</label>
+                        <input name="startdate" type="datetime-local" />
+                        <br>
+                        <label for="enddate">End Date:</label>
+                        <input name="enddate" type="datetime-local" />
+                        <br>
+                        <label for="task">Task:</label>
+                        <input name="task" placeholder="task description here" />
+                        <input type="button" onclick="addTask()" value="add">
+                      </form>
                 </div>
                 <p>
                     Text
