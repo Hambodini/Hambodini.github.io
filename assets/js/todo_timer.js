@@ -1,6 +1,16 @@
-const task = {startTime:"", endTime:"", text:""};
+class task {
+    constructor(startTime, endTime, taskText) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.taskText = taskText;
+    }
+    startTime
+    endTime
+    taskText
+};
 taskList = {}
 function addTask() {
-taskRaw = $('form').serializeArray()
-console.log(taskRaw)
+    taskRaw = $('form').serializeArray()
+    task(taskRaw.startTime,taskRaw.endTime ,taskRaw.taskText)
+    console.log(task)
 }
