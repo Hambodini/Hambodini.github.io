@@ -40,7 +40,7 @@
     </noscript>
 </head>
 
-<body class="is-preload">
+<body  onload="load()" class="is-preload">
 
     <!-- Header -->
     <header id="header">
@@ -57,15 +57,15 @@
                 <div class="box">
                     <form>
                         <label for="startTime">Start Date:</label>
-                        <input name="startTime" type="datetime-local" />
+                        <input id="startTime" name="startTime" type="datetime-local"/>
                         <br>
                         <label for="endTime">End Date:</label>
                         <input name="endTime" type="datetime-local" />
                         <br>
                         <label for="taskText">Task:</label>
                         <input name="taskText" placeholder="task description here" />
-                        <input type="button" onclick="addTask()" value="add">
-                    </form>
+                        <input type="submit" value="add">
+                      </form>
                 </div>
                 <p>
                     Text
