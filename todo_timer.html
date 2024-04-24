@@ -7,40 +7,40 @@
 <html>
 
 <head>
-    <title>Base 64 Encoder</title>
+    <title>Todo Timer</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/converter.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
 
-	<!-- favicon links -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="theme-color" content="#ffffff">
+    <!-- favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
-        <style> 
+        <style>
             textarea {
-              width: 100%;
-              height: 150px;
-              padding: 12px 20px;
-              box-sizing: border-box;
-              border: 2px solid #ccc;
-              border-radius: 4px;
-              background-color: #f8f8f8;
-              font-size: 16px;
-              resize: none;
+                width: 100%;
+                height: 150px;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                font-size: 16px;
+                resize: none;
             }
-            </style>
+        </style>
     </noscript>
 </head>
 
-<body class="is-preload">
+<body  onload="load()" class="is-preload">
 
     <!-- Header -->
     <header id="header">
@@ -53,17 +53,22 @@
         <!-- Main -->
         <section id="main" class="wrapper">
             <div class="inner">
-                <h1 class="major">Base 64 Encoder</h1>
+                <h1 class="major">Todo list and Timer</h1>
                 <div class="box">
-                    <div>
-                        <input type="file" onchange="encodeImageFileAsURL(this)" />
-                    </div>
-                    <div id="resultArea">
-                        <textarea id="result"></textarea>
-                    </div>
+                    <form>
+                        <label for="startTime">Start Date:</label>
+                        <input id="startTime" name="startTime" type="datetime-local"/>
+                        <br>
+                        <label for="endTime">End Date:</label>
+                        <input name="endTime" type="datetime-local" />
+                        <br>
+                        <label for="taskText">Task:</label>
+                        <input name="taskText" placeholder="task description here" />
+                        <input type="submit" value="add">
+                      </form>
                 </div>
                 <p>
-                    This is a base 64 encoder. base 64 encoding a method to convert an image into a very long string. it makes the image 33% smaller them before and the image can be decoded back into a image using js and can be stored into a database. one of the downsides of using base 64 is that it is considered very easy to decode and is not secure for confidential information. i think you can make it more secure by using java hash/salt for passwords and such.
+                    Text
                 </p>
             </div>
         </section>
@@ -81,7 +86,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/base64Converter.js"></script>
+    <script src="assets/js/todo_timer.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>

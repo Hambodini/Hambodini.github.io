@@ -4,8 +4,6 @@
 function encodeImageFileAsURL(element) {
     var file = element.files[0];
     var reader = new FileReader();
-    var element = document.createElement("textarea");
-    document.getElementById("resultArea")
     reader.onloadend = function() {
       document.getElementById("result").innerHTML = reader.result
     }
